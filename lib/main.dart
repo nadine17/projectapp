@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:projectapp/pages/bookDetails.dart';
 import 'package:projectapp/pages/login.dart';
 import 'package:projectapp/pages/signup.dart';
 
@@ -13,12 +15,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Book Vibe',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        textTheme: GoogleFonts.poppinsTextTheme(
+          Theme.of(context).textTheme,
+        ),
       ),
-      home: const Signup(),
+      home: const Bookdetails(),
       debugShowCheckedModeBanner: false,
     );
   }

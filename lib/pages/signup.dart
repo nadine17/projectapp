@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:projectapp/pages/login.dart';
 
 class Signup extends StatelessWidget {
   const Signup({super.key});
@@ -149,6 +150,17 @@ class Signup extends StatelessWidget {
                     'Create an account',
                     style: TextStyle(fontSize: 20),
                   )),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Login()));
+              },
+              style: TextButton.styleFrom(foregroundColor: Colors.black),
+              child: const Text(
+                'Sign in',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
             const Center(
                 child: Text(

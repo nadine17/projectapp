@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:projectapp/pages/signup.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -107,7 +108,10 @@ class Login extends StatelessWidget {
             ),
             const Center(child: Text("Don't have an account?")),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Signup()));
+              },
               style: TextButton.styleFrom(foregroundColor: Colors.black),
               child: const Text('Sign up'),
             )

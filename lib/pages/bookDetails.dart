@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:projectapp/models/book.dart';
+import 'package:projectapp/pages/pdfViewer.dart';
 
 class Bookdetails extends StatelessWidget {
-  const Bookdetails({super.key});
+  final Book book;
+
+  const Bookdetails({super.key, required this.book});
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +56,8 @@ class Bookdetails extends StatelessWidget {
                     // Book Cover Image (Overflow)
                     Positioned(
                       bottom: -50, // Adjust to overlap the white section
-                      child: Image.asset(
-                        'assets/images/bookCover.jpeg',
+                      child: Image.network(
+                        book.coverImageUrl,
                         height: 200, // Book cover height
                         fit: BoxFit.cover,
                       ),
@@ -65,15 +69,27 @@ class Bookdetails extends StatelessWidget {
               const SizedBox(height: 60), // Spacer for the image overlap
 
               // Book Information Section
-              const Text(
-                'It Ends with Us',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: Text(
+                    book.title,
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
-              const Text(
-                'Colleen Hoover',
+              Text(
+                book.author,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey,
+                ),
+              ),
+              Text(
+                book.category,
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.grey,
@@ -192,11 +208,10 @@ class Bookdetails extends StatelessWidget {
               const SizedBox(height: 20),
 
               // Book Description
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
-                  'It Ends With Us by Colleen Hoover is a powerful and emotional story... '
-                  'It delves into themes of love, heartbreak, and self-discovery.',
+                  book.discribtion,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 14,
@@ -212,7 +227,16 @@ class Bookdetails extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      final String pdfUrl =
+                          book.previewLink; // Ensure this is a valid PDF link
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PdfViewerScreen(pdfUrl: pdfUrl),
+                        ),
+                      );
+                    },
                     icon: const Icon(Icons.book),
                     label: const Text('Read'),
                     style: ElevatedButton.styleFrom(

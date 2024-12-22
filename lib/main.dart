@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projectapp/pages/bookDetails.dart';
+import 'package:projectapp/pages/home.dart';
 import 'package:projectapp/pages/login.dart';
+import 'package:projectapp/pages/quiz.dart';
 import 'package:projectapp/pages/signup.dart';
 
 void main() {
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      home: const Bookdetails(),
+      home: GenreSelectionApp(),
       debugShowCheckedModeBanner: false,
     );
   }

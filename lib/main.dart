@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:projectapp/pages/bookDetails.dart';
 import 'package:projectapp/pages/home.dart';
 import 'package:projectapp/pages/login.dart';
+import 'package:projectapp/pages/myLibrary.dart';
 import 'package:projectapp/pages/quiz.dart';
 import 'package:projectapp/pages/signup.dart';
 

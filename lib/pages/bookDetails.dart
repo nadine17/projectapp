@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projectapp/global.dart';
 import 'package:projectapp/models/book.dart';
 import 'package:projectapp/pages/pdfViewer.dart';
 
@@ -246,9 +247,30 @@ class Bookdetails extends StatelessWidget {
                   ),
                   const SizedBox(width: 20),
                   ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.headset),
-                    label: const Text('Listen'),
+                    onPressed: () {
+                      if (!savedBooks.contains(book)) {
+                        savedBooks.add(book);
+
+                        // Show a confirmation message
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            backgroundColor: Colors.green[500],
+                            content: Text('${book.title} has been saved!'),
+                            duration: Duration(seconds: 2),
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            backgroundColor: Color.fromRGBO(88, 11, 56, 1.0),
+                            content: Text('${book.title} is already saved!'),
+                            duration: Duration(seconds: 2),
+                          ),
+                        );
+                      }
+                    },
+                    icon: const Icon(Icons.bookmark),
+                    label: const Text('Save'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromRGBO(88, 11, 56, 1.0),
                       foregroundColor: Colors.white,

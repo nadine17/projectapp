@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'profile.dart';
 
 class DrawerMenu extends StatelessWidget {
@@ -10,16 +11,17 @@ class DrawerMenu extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          const DrawerHeader(
+          DrawerHeader(
             decoration: BoxDecoration(
-              color: Color(0xFF8A3030),
+              color: Color.fromRGBO(88, 11, 56, 1.0),
             ),
-            child: Text(
-              'User Details',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('Menu',
+                  style: GoogleFonts.poppins(
+                      color: Color.fromRGBO(252, 252, 252, 1),
+                      fontSize: 27,
+                      fontWeight: FontWeight.bold)),
             ),
           ),
           ListTile(

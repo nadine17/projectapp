@@ -6,6 +6,7 @@ import 'package:projectapp/pages/login.dart';
 import 'package:projectapp/pages/myLibrary.dart';
 import 'package:projectapp/pages/quiz.dart';
 import 'package:projectapp/pages/signup.dart';
+import 'package:projectapp/pages/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      home: GenreSelectionApp(),
+      home: SplashScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

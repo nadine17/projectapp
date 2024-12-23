@@ -5,7 +5,10 @@ import 'package:projectapp/pages/bookDetails.dart';
 import 'package:projectapp/pages/drawer.dart';
 import 'package:projectapp/pages/geners.dart';
 import 'package:projectapp/pages/myLibrary.dart';
+import 'package:projectapp/pages/profile.dart';
+
 import 'package:projectapp/pages/quiz.dart';
+import 'package:projectapp/widgets/bookCard.dart';
 import '../data/book_data.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -26,63 +29,20 @@ class HomeScreen extends StatelessWidget {
     shuffledFilteredBooks.shuffle();
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Center(
-          child: Text(
-            'BookVibe',
-            style: GoogleFonts.poppins(
-                color: Color.fromRGBO(88, 11, 56, 1.0),
-                fontSize: 27,
-                fontWeight: FontWeight.bold),
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.person,
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        elevation: 4,
+        shadowColor: Colors.grey,
+        title: Text(
+          'BookVibe',
+          style: GoogleFonts.poppins(
               color: Color.fromRGBO(88, 11, 56, 1.0),
-              size: 24,
-            ),
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-          ),
-        ],
+              fontSize: 27,
+              fontWeight: FontWeight.bold),
+        ),
       ),
       drawer: const DrawerMenu(),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
-        selectedItemColor: Color.fromRGBO(88, 11, 56, 1.0),
-        unselectedItemColor: Colors.grey,
-        onTap: (index) {
-          if (index == 3) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MyLibraryPage()),
-            );
-          }
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.library_books),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark),
-            label: '',
-          ),
-        ],
-      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -93,57 +53,115 @@ class HomeScreen extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFEDEDED),
+                  color: Color.fromRGBO(88, 11, 56, 1.0),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(
                   children: [
                     Expanded(
-                      flex: 2,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            'Get unlimited access to books in just a moment',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                        flex: 2,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(height: 10),
+                            Container(
+                              padding: const EdgeInsets.all(16.0),
+                              decoration: BoxDecoration(
+                                color: Color.fromRGBO(88, 11, 56, 1.0),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    flex: 2,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                            'Get unlimited access to books in just a moment',
+                                            style: GoogleFonts.poppins(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w200,
+                                                color: Colors.white)),
+                                        const SizedBox(height: 4),
+                                        const Text(
+                                          '*Terms & conditions apply',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Color.fromARGB(
+                                                115, 255, 255, 255),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 4),
-                          Text(
-                            '*Terms & conditions apply',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.black45,
+
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 20, right: 10),
+                              child: Container(
+                                height: 90, // Adjust the height as needed
+                                child: GridView.builder(
+                                  physics:
+                                      const NeverScrollableScrollPhysics(), // Prevents internal scrolling
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 5, // Two items per row
+                                    mainAxisSpacing:
+                                        8, // Vertical spacing between rows
+                                    crossAxisSpacing:
+                                        8, // Horizontal spacing between items
+                                    childAspectRatio:
+                                        0.75, // Adjusts the height-to-width ratio
+                                  ),
+                                  itemCount: 5, // Number of book covers
+                                  itemBuilder: (context, index) {
+                                    final bookCoverUrl = [
+                                      'https://www.free-ebooks.net/2d_covers/large/1722443761.jpg',
+                                      'https://www.free-ebooks.net/2d_covers/large/1573321793.jpg',
+                                      'https://www.free-ebooks.net/2d_covers/large/1714015010.jpg',
+                                      'https://www.free-ebooks.net/2d_covers/large/1634818535.jpg',
+                                      'https://www.free-ebooks.net/2d_covers/large/1586107172.jpg',
+                                    ][index]; // Replace with dynamic URLs if available
+
+                                    return ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: Image.network(
+                                        bookCoverUrl,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
+                            const SizedBox(height: 20),
+                            // Add more widgets below this if needed
+                          ],
+                        )),
                     const SizedBox(width: 8),
-                    Expanded(
-                      child: Image.network(
-                        'https://www.free-ebooks.net/2d_covers/large/1573321793.jpg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
                   ],
                 ),
               ),
               const SizedBox(height: 20),
+              const CustomDivider(),
               Section(
                 title: 'Recommended for you',
-                books: filteredBooks,
+                books: shuffledFilteredBooks,
               ),
               const SizedBox(height: 20),
+              const CustomDivider(),
               Section(
                 title: 'Explore other books',
                 books: shuffledBooks,
                 isGrid: true, // Pass the isGrid flag to show books in grid
               ),
               const SizedBox(height: 20),
+              const CustomDivider(),
               Section(
                 title: 'Trending books',
                 books: shuffledFilteredBooks,
@@ -175,14 +193,11 @@ class Section extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Color.fromRGBO(88, 11, 56, 1.0),
-          ),
-        ),
+        Text(title,
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.bold,
+                color: Color.fromRGBO(88, 11, 56, 1.0),
+                fontSize: 20)),
         const SizedBox(height: 10),
         isGrid
             ? GridView.builder(
@@ -198,53 +213,38 @@ class Section extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final book = books[index];
                   return GestureDetector(
-                    onTap: () {
-                      // Navigate to the Bookdetails page
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Bookdetails(book: book),
-                        ),
-                      );
-                    },
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.network(
-                              book.coverImageUrl,
-                              fit: BoxFit.cover,
-                              width: double.infinity,
-                            ),
+                      onTap: () {
+                        // Navigate to the Bookdetails page
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Bookdetails(book: book),
                           ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          book.title,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
+                        );
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          BookCard(
+                            title: book.title,
+                            author: book.author,
+                            coverUrl: book.coverImageUrl,
+                            onTap: () {
+                              // Navigate to the Bookdetails page when the card is tapped
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Bookdetails(book: book),
+                                ),
+                              );
+                            },
                           ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          book.author,
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: Colors.black54,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ),
-                  );
+                        ],
+                      ));
                 },
               )
             : SizedBox(
-                height: 200,
+                height: 270,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: books.length,
@@ -260,48 +260,73 @@ class Section extends StatelessWidget {
                           ),
                         );
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.network(
-                                book.coverImageUrl,
-                                height: 150,
-                                width: 100,
-                                fit: BoxFit.cover,
-                              ),
+                      child: BookCard(
+                        title: book.title,
+                        author: book.author,
+                        coverUrl: book.coverImageUrl,
+                        onTap: () {
+                          // Navigate to the Bookdetails page when the card is tapped
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Bookdetails(book: book),
                             ),
-                            const SizedBox(height: 8),
-                            Text(
-                              book.title,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
-                                color: Colors.black,
-                              ),
-                              maxLines: 1,
-                              softWrap: true,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            Text(
-                              '${book.author}',
-                              style: const TextStyle(
-                                fontSize: 12,
-                                color: Colors.black54,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ],
-                        ),
+                          );
+                        },
                       ),
                     );
                   },
                 ),
               ),
       ],
+    );
+  }
+}
+
+class CustomDivider extends StatelessWidget {
+  const CustomDivider({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              height: 1,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.transparent,
+                    Color.fromRGBO(88, 11, 56, 1.0),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(width: 10),
+          const Icon(
+            Icons.star,
+            color: Color.fromRGBO(88, 11, 56, 1.0),
+            size: 24,
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Container(
+              height: 1,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color.fromRGBO(88, 11, 56, 1.0),
+                    Colors.transparent,
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

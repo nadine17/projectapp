@@ -16,11 +16,16 @@ class OnboardingScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Center(
-            child: Image.asset(
-              'assets/images/getStarted.png',
-              width: 250,
-              height: 250,
-              fit: BoxFit.contain,
+            child: Container(
+              margin: const EdgeInsets.all(8),
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(50)),
+              child: Image.asset(
+                'assets/images/getstated.jpeg',
+                width: 250,
+                height: 250,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           const SizedBox(height: 30),

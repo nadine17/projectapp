@@ -4,6 +4,7 @@ import 'package:projectapp/pages/home.dart';
 import 'package:projectapp/pages/login.dart';
 import 'package:projectapp/pages/myLibrary.dart';
 import 'package:projectapp/pages/drawer.dart';
+import 'package:projectapp/pages/profile.dart';
 import 'package:projectapp/pages/signup.dart';
 import 'package:projectapp/pages/splash.dart';
 import 'package:projectapp/pages/timer.dart';
@@ -24,9 +25,9 @@ class _MainScreenState extends State<MainScreen> {
       case 0:
         return HomeScreen(selectedGenres: widget.selectedGenres);
       case 1:
-        return SplashScreen(); // Replace with your Quiz page widget
+        return HomeScreen(selectedGenres: widget.selectedGenres);
       case 2:
-        return TimerPage(); // Replace with your Genres page widget
+        return TimerPage();
       case 3:
         return MyLibraryPage();
       default:

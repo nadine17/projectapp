@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projectapp/pages/quiz.dart';
-
 import 'get_started.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -9,7 +7,6 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: GestureDetector(
         onTap: () {
           Navigator.push(
@@ -17,30 +14,18 @@ class SplashScreen extends StatelessWidget {
             MaterialPageRoute(builder: (context) => OnboardingScreen()),
           );
         },
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 200,
-                height: 200,
-                child: Image.asset(
-                  'assets/images/logo.png',
-                  fit: BoxFit.contain,
-                ),
-              ),
-              const SizedBox(height: 20),
-              const Text(
-                'Welcome',
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.w500,
-                  color: Color(0xFF8A3030),
-                  letterSpacing: 1.2,
-                ),
-              ),
-            ],
-          ),
+        child: Stack(
+          fit: StackFit
+              .expand, // Makes the background image fill the entire screen
+          children: [
+            // Full-screen background image
+            Image.asset(
+              'assets/images/splash.jpg', // Replace with your background image path
+              fit: BoxFit.cover,
+            ),
+
+            // Foreground content
+          ],
         ),
       ),
     );

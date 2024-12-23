@@ -5,7 +5,7 @@ class Book {
   final String author;
   final String category;
   final String previewLink;
-  final int numberOfPages;
+  final String numberOfPages;
   final String audiobookLink;
   final String discribtion;
 

@@ -118,11 +118,11 @@ class Bookdetails extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // Year Section
-                  Column(
+                  const Column(
                     children: const [
                       Text(
                         '2019',
@@ -154,16 +154,16 @@ class Bookdetails extends StatelessWidget {
 
                   // Pages Section
                   Column(
-                    children: const [
+                    children: [
                       Text(
-                        '215',
-                        style: TextStyle(
+                        book.numberOfPages,
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 4),
-                      Text(
+                      const SizedBox(height: 4),
+                      const Text(
                         'Pages',
                         style: TextStyle(
                           fontSize: 12,
@@ -184,7 +184,7 @@ class Bookdetails extends StatelessWidget {
                   ),
 
                   // Reviews Section
-                  Column(
+                  const Column(
                     children: [
                       Text(
                         '210',
@@ -221,7 +221,7 @@ class Bookdetails extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 120),
+              const SizedBox(height: 60),
 
               // Buttons for Read and Listen
               Row(

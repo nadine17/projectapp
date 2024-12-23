@@ -26,7 +26,7 @@ class _GenreSelectionPageState extends State<GenreSelectionPage> {
     'Humor',
     'Non-fiction',
     'Horror',
-    'Historical',
+    'History',
     'Biography'
   ];
 

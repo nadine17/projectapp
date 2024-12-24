@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:projectapp/pages/home.dart';
 import 'package:projectapp/pages/login.dart';
 import 'package:projectapp/pages/myLibrary.dart';
-import 'package:projectapp/pages/drawer.dart';
+import 'package:projectapp/pages/drawer2.dart';
 import 'package:projectapp/pages/profile.dart';
 import 'package:projectapp/pages/signup.dart';
 import 'package:projectapp/pages/splash.dart';
@@ -38,7 +38,8 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: const DrawerMenu(),
+        // drawer: const DrawerMenu(),
+        drawer: DrawerMenu(selectedGenres: widget.selectedGenres),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           selectedItemColor: Color.fromRGBO(88, 11, 56, 1.0),

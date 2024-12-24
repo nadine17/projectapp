@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projectapp/models/book.dart';
 import 'package:projectapp/pages/bookDetails.dart';
-import 'package:projectapp/pages/drawer.dart';
+import 'package:projectapp/pages/drawer2.dart';
 import 'package:projectapp/pages/geners.dart';
 import 'package:projectapp/pages/myLibrary.dart';
 import 'package:projectapp/pages/profile.dart';
-
 import 'package:projectapp/pages/quiz.dart';
 import 'package:projectapp/widgets/bookCard.dart';
 import '../data/book_data.dart';
 
 class HomeScreen extends StatelessWidget {
   final Set<String> selectedGenres;
-  const HomeScreen({Key? key, required this.selectedGenres}) : super(key: key);
+  final String? username;
+  final String? email;
+  const HomeScreen(
+      {Key? key, this.username, this.email, required this.selectedGenres})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,7 @@ class HomeScreen extends StatelessWidget {
               fontWeight: FontWeight.bold),
         ),
       ),
-      drawer: const DrawerMenu(),
+      drawer: DrawerMenu(selectedGenres: selectedGenres),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),

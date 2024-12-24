@@ -9,6 +9,7 @@ import 'package:projectapp/pages/signup.dart';
 import 'package:projectapp/pages/splash.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
